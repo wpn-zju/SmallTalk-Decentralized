@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/navigation_main_fragment">
+
+    <fragment
+        android:id="@+id/navigation_main_fragment"
+        android:name="com.peinanweng.smalltalkblockchain.ui.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/channel_list_enter_chat"
+            app:destination="@id/navigation_chat" />
+        <action
+            android:id="@+id/channel_list_new_channel"
+            app:destination="@id/navigation_group_search" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_group_search"
+        android:name="com.peinanweng.smalltalkblockchain.ui.main.ChannelSearchFragment"
+        android:label="fragment_group_search"
+        tools:layout="@layout/fragment_channel_search" >
+        <action
+            android:id="@+id/new_channel_enter_chat"
+            app:destination="@id/navigation_chat"
+            app:popUpTo="@id/navigation_main_fragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.peinanweng.smalltalkblockchain.ui.main.ChatFragment"
+        android:label="@string/fragment_chat"
+        tools:layout="@layout/fragment_chat">
+        <argument
+            android:name="channel"
+            app:argType="string" />
+    </fragment>
+</navigation>
